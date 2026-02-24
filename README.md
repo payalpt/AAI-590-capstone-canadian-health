@@ -1,8 +1,8 @@
-# AAI-590 Capstone: Forecasting Canadian Infectious Disease Incidence
+# AAI-590 Capstone: Forecasting Canadian Infectious Disease Incidence<br>
 
-**Project Team** Carrie Little, Payal Patal, Dean P. Simmer
-**Course:** AAI-590 — Applied AI Capstone | University of San Diego, M.S. Applied AI
-**Dataset:** [CANDID / IIDDA](https://github.com/canmod/iidda) — Canadian Notifiable Disease Incidence Dataset
+**Project Team** Carrie Little, Payal Patal, Dean P. Simmer <br>
+**Course:** AAI-590 — Applied AI Capstone | University of San Diego, M.S. Applied AI<br>
+**Dataset:** [CANDID / IIDDA](https://github.com/canmod/iidda) — Canadian Notifiable Disease Incidence Dataset<br>
 
 ## Research Question (Proposed)
 
