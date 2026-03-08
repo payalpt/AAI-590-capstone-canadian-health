@@ -1,0 +1,94 @@
+About this package
+==================
+
+  * date downloaded: 2026-03-06 16:39:07
+  * link: https://diseases.canada.ca/notifiable/charts?c=ppd#d=958%2C58%2C70%2C85&y=1924%2C2023
+
+Limitations
+~~~~~~~~~~~
+
+Influenza, Epidemic
+-------------------
+
+Influenza, epidemic has been reported since 1924 and was removed from the notifiable disease list after 1958.
+NL joined confederation in 1949, and is included from 1949 onward. Reporting to the Notifiable Disease system began in July.
+CNDSS counts and rates for influenza, epidemic include data from the following provinces/territories and years:
+  
+    AB: 1926, 1928, 1931-1948, 1952-1954
+    BC: 1924, 1925, 1927-1958
+    MB, NS, ON: 1924-1958
+    NB: 1924-1955
+    NL: 1951-1953, 1955
+    PE: 1929-1958
+    QC, SK: 1924-1957
+    YT: 1956, 1957
+  
+  
+
+Influenza, Laboratory Confirmed
+-------------------------------
+
+Influenza, laboratory confirmed was added to the notifiable disease list in 2000.
+Influenza national surveillance is conducted by the FluWatch program. More information can be found at Flu (influenza): FluWatch surveillance - Canada.ca.
+
+
+Measles
+-------
+
+Measles has been reported since 1924, removed after 1958, and returned in 1969.
+NL joined confederation in 1949, and is included from 1949 onward. Reporting to the Notifiable Disease system began in July.
+CNDSS counts and rates for measles include data from the following provinces/territories and years:
+  
+    AB, MB, NS, ON, QC: 1924-1958, 1969 onwards
+    BC: 1924-1958, 1971 onwards
+    NB: 1924-1955, 1971 onwards
+    NL: 1949-1958, 1969 onwards
+    NT: 1969 onwards
+    NU: 2000 onwards
+    PE: 1929-1956, 1972, 1979-1985, 1989 onwards
+    SK: 1924-1956, 1969 onwards
+    YT: 1956-1958, 1969 onwards
+  
+The 2023 data from MB were not available at time of data preparation. The population of this province has been removed for rate calculation. 
+  
+
+Pertussis
+---------
+
+Pertussis has been reported since 1924.
+NL joined confederation in 1949, and is included from 1949 onward. Reporting to the Notifiable Disease system began in July.
+From 2013 through 2016, QC data may include probable cases of pertussis. 
+CNDSS counts and rates for pertussis include data from the following provinces/territories and years:
+  
+    AB, BC, MB, NB, NS, ON, QC, SK: 1924 onwards
+    NL: 1949 onwards
+    NT: 1959, 1963 onwards
+    NU: 2000 onwards
+    PE: 1929 onwards
+    YT: 1956 onwards
+  
+The 2023 data from MB were not available at time of data preparation. The population of this province has been removed for rate calculation. 
+  
+
+Disease descriptions
+~~~~~~~~~~~~~~~~~~~~
+
+Influenza, Epidemic
+-------------------
+
+Influenza, or the flu, is a respiratory infection caused by the influenza virus. Strains circulate every year, making people sick. Influenza typically starts with a headache, chills and cough, followed rapidly by fever, loss of appetite, muscle aches and fatigue, running nose, sneezing, watery eyes and throat irritation. Nausea, vomiting and diarrhea may also occur, especially in children.  Most people will recover from influenza within a week or ten days, but some - including those over 65 and adults and children with some chronic conditions, such as diabetes and/or cancer etc - are at greater risk of more severe complications, such as pneumonia.  Influenza has been collected under two descriptions in the notifiable disease system: influenza, epidemic from 1924-1959, and influenza, laboratory confirmed from 2000 onwards
+
+Influenza, Laboratory Confirmed
+-------------------------------
+
+Influenza, or the flu, is a respiratory infection caused by the influenza virus. Strains circulate every year, making people sick. Influenza typically starts with a headache, chills and cough, followed rapidly by fever, loss of appetite, muscle aches and fatigue, running nose, sneezing, watery eyes and throat irritation. Nausea, vomiting and diarrhea may also occur, especially in children.  Most people will recover from influenza within a week or ten days, but some - including those over 65 and adults and children with some chronic conditions, such as diabetes and/or cancer etc - are at greater risk of more severe complications, such as pneumonia.  Influenza has been collected under two descriptions in the notifiable disease system: influenza, epidemic from 1924-1959, and influenza, laboratory confirmed from 2000 onwards
+
+Measles
+-------
+
+Measles is a highly infectious disease caused by the measles virus and is characterized by a red, blotchy rash that begins on the face. It is spread through direct contact with or inhalation of the secretions from an infected person's nose or mouth. Measles affects all age groups and can be prevented by a vaccine. The National Advisory Committee on Immunization (NACI) recommends immunization against measles.
+
+Pertussis
+---------
+
+Pertussis (whooping cough) is a highly contagious infection of the respiratory tract caused by the bacterium Bordetella pertussis. It is easily transmitted from one person to another through the discharges or droplets from an infected person's nose or mouth. The illness is characterized by severe coughing spasms, which may or may not be associated with the classic inspiratory whoop made when breathing in (hence the popular name "whooping cough"). Pertussis can be prevented by a vaccine.  The National Advisory Committee on Immunization (NACI) recommends immunization against pertussis

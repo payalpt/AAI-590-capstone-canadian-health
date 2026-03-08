@@ -10,9 +10,8 @@ venv/
 .ipynb_checkpoints/
 *.ipynb_checkpoints
 
-# Data — raw/processed data files not committed (large)
-data/raw/
-data/processed/
+# Data — only ignore the large raw source file
+data/raw/canmod-cdi-normalized.csv
 
 # OS
 .DS_Store
