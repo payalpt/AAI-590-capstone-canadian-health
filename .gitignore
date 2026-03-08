@@ -12,6 +12,7 @@ venv/
 
 # Data — only ignore the large raw source file
 data/raw/canmod-cdi-normalized.csv
+data/processed/candid_data_split.csv
 
 # OS
 .DS_Store
