@@ -1,0 +1,19 @@
+{
+  "lookback_weeks": 52,
+  "forecast_horizon": 8,
+  "step_size": 1,
+  "min_coverage": 0.7,
+  "train_cutoff": "1986-01-01",
+  "val_cutoff": "2004-01-01",
+  "focus_diseases": [
+    "influenza",
+    "whooping-cough",
+    "measles"
+  ],
+  "n_series_retained": 4,
+  "n_series_excluded": 30,
+  "total_windows": 20220,
+  "windows_train": 12740,
+  "windows_val": 3756,
+  "windows_test": 3724
+}
