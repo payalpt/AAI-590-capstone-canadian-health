@@ -1,0 +1,24 @@
+{
+  "lookback_weeks": 52,
+  "forecast_horizon": 8,
+  "step_size": 1,
+  "n_features": 6,
+  "feature_names": [
+    "cases_per_100k",
+    "roll4_per_100k",
+    "roll13_per_100k",
+    "roll52_per_100k",
+    "week_sin",
+    "week_cos"
+  ],
+  "target_feature": "cases_per_100k",
+  "train_cutoff": "1986-01-01",
+  "val_cutoff": "2004-01-01",
+  "focus_diseases": [
+    "influenza",
+    "whooping-cough",
+    "measles"
+  ],
+  "total_windows": 20220,
+  "note": "X shape: (n_windows, lookback_weeks, n_features). y is cases_per_100k only \u2014 denormalize using provincial population from window_metadata to recover raw case counts at evaluation time."
+}
