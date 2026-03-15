@@ -1,0 +1,33 @@
+{
+  "seed": 42,
+  "lookback_weeks": 52,
+  "forecast_horizon": 8,
+  "n_features": 6,
+  "feature_names": [
+    "cases_per_100k",
+    "roll4_per_100k",
+    "roll13_per_100k",
+    "roll52_per_100k",
+    "week_sin",
+    "week_cos"
+  ],
+  "target_feature": "cases_per_100k",
+  "hidden_size": 128,
+  "num_layers": 2,
+  "dropout": 0.2,
+  "batch_size": 256,
+  "max_epochs": 150,
+  "learning_rate": 0.001,
+  "weight_decay": 1e-05,
+  "lr_patience": 5,
+  "lr_factor": 0.5,
+  "lr_min": 1e-06,
+  "early_stop_patience": 15,
+  "loss_fn": "MSELoss",
+  "optimizer": "Adam",
+  "best_epoch": 8,
+  "best_val_mse": 0.5418315088303007,
+  "best_val_rmse": 0.7360920518727945,
+  "total_epochs": 23,
+  "device": "cuda"
+}
