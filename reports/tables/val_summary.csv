@@ -1,0 +1,8 @@
+check,status,details
+dataset_rows,PASS,"934,010 rows"
+dataset_cols,PASS,22 columns
+split_col_exists,PASS,split column exists
+duplicate_rows,PASS,0 duplicate rows
+key_duplicates,REVIEW,1 duplicate province + disease + week rows
+train_before_val,PASS,"train max=1985-12-29 00:00:00, validation min=1986-01-05 00:00:00"
+val_before_test,PASS,"validation max=2003-12-28 00:00:00, test min=2004-01-01 00:00:00"
