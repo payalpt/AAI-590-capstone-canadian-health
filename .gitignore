@@ -10,11 +10,21 @@ venv/
 .ipynb_checkpoints/
 *.ipynb_checkpoints
 
-# Data — only ignore the large raw source file
+# Data — large raw source files (not committed)
 data/raw/canmod-cdi-normalized.csv
 data/processed/candid_data_split.csv
 data/processed/final_modeling_dataset.csv
 data/processed/windows/
+
+# Climate — raw station files (~1.1 GB total, not committed)
+# Metadata Excel files and processed outputs ARE committed
+data/raw/climate/Adj_Daily_Rain_v2017/
+data/raw/climate/Adj_Daily_Snow_v2017/
+data/raw/climate/Adj_Daily_Total_v2017/
+data/raw/climate/Homog_daily_max_temp_v2023_Gen3/
+data/raw/climate/Homog_daily_mean_temp_v2023_Gen3/
+data/raw/climate/Homog_daily_min_temp_v2023_Gen3/
+data/processed/climate_disease_merged.csv
 
 # OS
 .DS_Store
