@@ -62,7 +62,41 @@ TBD
 - RMSE (Root Mean Squared Error)
 - MAPE (Mean Absolute Percentage Error)
 
+## Climate Data (AHCCD)
+
+A supplementary climate dataset is used to explore whether temperature and precipitation correlate with disease incidence. See `notebooks/02_climate_exploration.ipynb`.
+
+**Source**: [Government of Canada — Adjusted and Homogenized Canadian Climate Data (AHCCD)](https://open.canada.ca/data/en/dataset/d6813de6-b20a-46cc-8990-01862ae15c5f)
+
+### Files in `data/raw/climate/`
+
+Metadata files are committed. Raw station files (~1.1 GB) are gitignored — download from the source URL above and place them in `data/raw/climate/`.
+
+| Directory / File | Variable | Unit | Coverage | Committed |
+|---|---|---|---|---|
+| `Homog_daily_max_temp_v2023_Gen3/` | Daily max temperature | °C | ~1840–2023 | No |
+| `Homog_daily_mean_temp_v2023_Gen3/` | Daily mean temperature | °C | ~1840–2023 | No |
+| `Homog_daily_min_temp_v2023_Gen3/` | Daily min temperature | °C | ~1840–2023 | No |
+| `Adj_Daily_Rain_v2017/` | Adjusted daily rainfall | mm | ~1840–2017 | No |
+| `Adj_Daily_Snow_v2017/` | Adjusted daily snowfall | mm | ~1840–2017 | No |
+| `Adj_Daily_Total_v2017/` | Adjusted daily total precipitation | mm | ~1840–2017 | No |
+| `Temperature_Stations_Gen3_2023.xlsx` | Temperature station metadata | — | — | Yes |
+| `Adj_Precipitation_Stations.xls` | Precipitation station metadata | — | — | Yes |
+| `Homog_Temperature_Stations_Segmented_List_Gen3.xls` | Temperature station segment manifest | — | — | Yes |
+
+**Analysis scope**: 1924–2017 (full overlap of all climate variables and all three focus diseases).
+**Station counts**: 780 temperature stations, 463 precipitation stations, all 13 provinces/territories.
+
+### File format
+
+Each `.txt` station file uses a fixed-width format: `YEAR  MONTH  val1flag ... val31flag` (one row per month, 31 day columns). Missing values: `-9999.99M` (precip) / `-9999.9M` (temp). Flags: `Y` = valid, `M` = missing, `T` = trace, `a` = adjusted.
+
+### Province code → ISO 3166-2 mapping
+
+Temperature files use `QUE`, `ONT`, `ALTA`, `SASK`, `MAN`, `NFLD`, `NWT`, `PEI` — mapped to `CA-QC`, `CA-ON`, `CA-AB`, `CA-SK`, `CA-MB`, `CA-NL`, `CA-NT`, `CA-PE` respectively. Precipitation files use near-ISO codes (`QC`, `ON`, etc.) with one exception: `YK` → `CA-YT`.
+
 ## References
 
 - Earn, D. et al. (2024). CANDID: Canadian Notifiable Disease Incidence Dataset. *PLOS Global Public Health.*
 - IIDDA GitHub: https://github.com/canmod/iidda
+- AHCCD: Vincent, L.A. et al. Government of Canada Adjusted and Homogenized Canadian Climate Data. https://open.canada.ca/data/en/dataset/d6813de6-b20a-46cc-8990-01862ae15c5f
