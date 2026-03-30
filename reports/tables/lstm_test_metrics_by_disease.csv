@@ -1,0 +1,4 @@
+disease,n_windows,rmse,mae
+influenza,931,1.865372,0.747815
+measles,931,0.028154,0.02078
+whooping-cough,1862,0.123784,0.072953
