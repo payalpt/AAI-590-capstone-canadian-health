@@ -1,0 +1,5 @@
+model,disease,n_years,mae,rmse,mape,mean_pred_rate,mean_phac_rate
+LSTM,measles,16,0.3252,0.6424,64.64,0.0255,0.35
+LSTM,whooping-cough,18,5.8677,6.847,96.04,0.1001,5.9678
+ARIMA,measles,18,0.3108,0.6179,98.13,0.0006,0.3113
+ARIMA,whooping-cough,18,5.8559,6.848,93.27,0.1119,5.9678
