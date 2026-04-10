@@ -1,19 +1,30 @@
 # AAI-590 Capstone: Multi-Disease Outbreak Forecasting with Temporal Deep Learning
 
-**Project Team:** Carrie Little, Payal Patal, Dean P. Simmer
+**Team:** Carrie Little, Payal Patel, Dean P. Simmer
+
 **Course:** AAI-590 — Applied AI Capstone | University of San Diego, M.S. Applied AI
+
 **Final Deadline:** April 13, 2026
+
+## Overview 
+
+This project investigates whether short-term disease incidence can be forecast at the province level in Canada using historical weekly surveillance data. We compare a clasical statistical baseline (ARIMA) with a deep learning approach (LSTM) to evaluate how well each method predicts weekly disease activity on held-out test data.
+
+Our final project focuses on three diseases: **influenza, measles, and pertussis (whooping cough)**. Using weekly province-level case data, we build forecasting datasets, train both models, compare error metrics, and validate aggregated outputs against Public Health Agency of Canada (PHAC) reference totals. The goal is to better understand which modeling appraoch is more useful for short-term public health forecasting and how performance varies by disease.
 
 ## Research Question
 
-> Can we accurately forecast short-term disease incidence (4–8 weeks ahead) across Canadian provinces using historical weekly case counts, and does a deep learning approach (LSTM or Transformer-based) outperform classical baselines such as ARIMA or Prophet?
+Can short-term disease incidence be forecast accurately across Canadian provinces using historical weekly case counts, and does a deep learning model such as LSTM outperform a classical baseline such as ARIMA?
 
 **Forecast horizon:** 4–8 weeks ahead
+
 **End users:** Provincial/federal public health agencies (e.g., PHAC), epidemiologists, health system planners
 
-## Datasets
+## Data
+This project uses Canadian infectious disease surveillance data prepared for time-series forecasting.
 
-### Primary: CANDID / IIDDA
+### Primary data source:
+- **CANDID / IIDDA weekly notifiable disease data**
 
 The **Canadian Notifiable Disease Incidence Dataset (CANDID)** contains 934,010 unique incidence records spanning 1903–2021, covering 317 diseases across 13 Canadian provinces and territories. Data is accessed via the [IIDDA REST API](https://math.mcmaster.ca/iidda/api/).
 
@@ -21,13 +32,15 @@ The **Canadian Notifiable Disease Incidence Dataset (CANDID)** contains 934,010 
 - **GitHub:** https://github.com/canmod/iidda
 - **Key dataset:** `canmod-cdi-normalized`
 
-### Secondary: PHAC Notifiable Disease Data
+### External reference (secondary):
+- **PHAC Notifiable Disease Online totals**
 
-Used for cross-validation against CANDID (annual granularity).
+PHAC totals were used as a directional validation benchmark for aggregated outputs.
 
 - **Source:** [PHAC Notifiable Disease Dataset Extraction](https://diseases.canada.ca/notifiable/extract-dataset)
 
-### Supplementary: AHCCD Climate Data
+### Supplementary dataset:
+- **AHCCD Climate Data**
 
 Province-level daily temperature and precipitation used to explore climate–disease correlations.
 
@@ -37,55 +50,120 @@ Province-level daily temperature and precipitation used to explore climate–dis
 
 > **Note:** Raw climate files (~1.1 GB) are gitignored. Download from the source URL above and place in `data/raw/climate/`. Metadata files are committed.
 
-## Focus Diseases
-
-| Disease | CANDID key | Weekly Records | Coverage |
-|---------|-----------|----------------|----------|
-| Influenza | `influenza` | — | Cross-validated against PHAC |
-| Pertussis (Whooping Cough) | `whooping-cough` | 30,059 | 1903–2021 |
-| Measles | `measles` | 11,164 | 1903–2019 |
+> Climate exploration was ultimately not included in the final modeling pipeline because findings were not strong enough to justify moving forward. That work is avaiable in `notebooks/02_climate_exploration.ipynb`.
 
 **Scope notes:**
-- Nunavut (`CA-NU`) excluded from modeling — very sparse data
-- `whooping-cough` 1990s resurgence may reflect reporting behavior change, not true incidence
-- Analysis window restricted to 1924–2017 for climate-disease merged modeling
+- The final comparison highlights results from **Ontario (ON)** and **Alberta (AB)**, since these provinces provided the most consistent coverage across the targeted diseases.
+- Nunavut (`CA-NU`) excluded from modeling due to very sparse data.
+- PHAC totals were used as a reference for cross-validation, but they are not identical to the province-level modeling data used in this project.
+- Climate data was explored as a supplementary analysis, but it was not included in the final forecasting pipeline.
+
+## Project Highlights
+- Built a province-level weekly disease forecasting workflow using Canadian surveillance data
+- Compared a local ARIMA baseline against a global LSTM model
+- Evaluated both models on held-out test data using RMSE and MAE
+- Found that performance depended on the metric and the disease
+- Used PHAC totals as an external directional validation check for aggregated model outputs
+
+## Approach 
+
+Our workflow follows six main steps:
+
+1. Ingest and clean weekly disease surveillance records
+2. Create province-disease time series
+3. Engineer features and assign train, validation, and test windows
+4. Train an ARIMA baseline and an LSTM model
+5. Compare held-out test performance
+6. Validate aggregated outputs against PHAC totals
+
+### Models
+- **ARIMA:** trained separately for each province-disease time series
+- **LSTM:** trained globally across sequences
+
+Because ARIMA is a local model and LSTM is a global model, results should be interpreted carefully when comparing performance directly.
+
+## Results Summary
+The final comparison showed the the two models had different strengths: 
+
+- **ARIMA** performed better on overall RMSE
+- **LSTM** performed better on overall MAE
+- Performance also varied by disease rather than following one consistent pattern across all series
+
+This suggests that model choice depends not only on the forecasting method, but also on the disease behavior and the evaluation metric being emphasized.
+
+## Notebook Guide
+The main notebooks used in the final project are:
+
+- `00_colab_setup.ipynb`
+  Sets up and verifies the project environment for Google Colab
+  
+- `01_data_ingestion_and_eda_fixed.ipynb`
+  Loads, cleans, validates, and prepares the weekly modeling dataset
+  
+- `03A_V1_ARIMA_model.ipynb`
+  Trains and evaluates the ARIMA baseline model
+  
+- `03B_V3_LSTM_model_colab.ipynb`
+  Trains and evaluates the LSTM forecasting model
+  
+- `04_V3_Compare_models_colab_Added.ipynb`
+  Compares ARIMA and LSTM results on the held-out test set and summarizes findings
+
+- `05_V2_PHAC_Validation_and_Analysis_colab.ipynb`
+  Compared aggregated model outputs against PHAC totals for cross-validation
+
+These notebooks reflect the final modeling and evaluation workflow used in the report and presentation.
+
+## Key Outputs
+
+Important project outputs include:
+
+- Final modeling dataset
+- ARIMA test results and summary tables
+- LSTM test metrics
+- Forecast comparison tables
+- Figures used in the final report and presentation
+- Final paper and presentation materials
+
+## Reproducibility
+
+This project can be reproduced by running the notebooks in sequence, since each stage depends on outputs created earlier in the workflow. This begins with environment setup, followed by data preparation, model training, model comparison and external validation.
+
+When running in Google Colab, some file paths may need to be adjusted to match local or Google Drive storage locations used during development. 
 
 ## Project Structure
 
-```
+```text
+
 ├── data/
-│   ├── raw/                             # Downloaded from CANDID API and PHAC (gitignored)
-│   │   └── climate/                     # AHCCD climate files (gitignored; metadata committed)
+│   ├── raw/                             # Raw source files and PHAC reference files
+│   │   ├── climate/                     # AHCCD climate data for supplementary exploration
+│   │   ├── phac-data.csv
+│   │   └── phac-notes.txt
 │   └── processed/
-│       ├── candid_data_split.csv        # Cleaned and train/val/test split disease data
-│       ├── climate_disease_merged.csv   # Province-level climate + disease joined dataset
-│       ├── final_modeling_dataset.csv
-│       └── windows/
-│           ├── X_{train,val,test}.npy   # Base windowed sequences (52-week lookback, 8-step target)
-│           ├── y_{train,val,test}.npy
-│           └── features/                # Feature-engineered windows (6 features)
-│               ├── X_{train,val,test}_feat.npy  # shape: (n_windows, 52, 6)
-│               └── y_{train,val,test}_feat.npy  # shape: (n_windows, 8)
+│       └── phac-clean.csv               # Cleaned PHAC reference data
 ├── models/
 │   └── lstm_baseline/
-│       ├── lstm_baseline_best.pt        # Best model weights (lowest val Huber loss)
-│       ├── lstm_baseline_config.json    # Architecture + training hyperparameters
-│       └── training_history.csv         # Per-epoch train/val loss log
+│       ├── lstm_baseline_best.pt        # Best saved LSTM model weights
+│       ├── lstm_baseline_config.json    # LSTM architecture and training settings
+│       └── training_history.csv         # Training and validation loss history
 ├── notebooks/
-│   ├── 00_colab_setup.ipynb             # Google Drive mount and repo clone for Colab
-│   ├── 01_data_ingestion_and_eda.ipynb  # API ingestion, PHAC cross-validation, EDA (local)
-│   ├── 01_data_ingestion_and_EDA_colab.ipynb  # Colab version of notebook 01
-│   ├── 02_climate_exploration.ipynb     # AHCCD data processing and climate-disease merge
-│   ├── 02B_LSTM_model_colab.ipynb       # LSTM V1 — superseded by 03B
-│   └── 03B_LSTM_model_colab.ipynb       # LSTM V2 — optimised model with HP search (current)
+│   ├── 00_colab_setup.ipynb
+│   ├── 01_data_ingestion_and_eda_fixed.ipynb
+│   ├── 02_climate_exploration.ipynb
+│   ├── 03A_V1_ARIMA_model.ipynb
+│   ├── 03B_V3_LSTM_model_colab.ipynb
+│   ├── 04_V3_Compare_models_colab_Added Visuals.ipynb
+│   └── 05_V2_PHAC_Validation_and_Analysis_colab.ipynb
 ├── reports/
-│   ├── figures/                         # Saved plots for the report
-│   └── tables/
-│       ├── hp_search_results.csv        # Full 24-trial grid search results
-│       └── val_metrics.csv              # Per-horizon RMSE/MAE on validation set
+│   ├── figures/                         # Figures used in the report and presentation
+│   └── tables/                          # Saved model outputs, summaries, and validation tables
 ├── src/
 │   └── data_loader.py                   # CANDID API ingestion utilities
-└── requirements.txt
+├── .gitignore
+├── LICENSE
+├── requirements.txt
+└── README.md
 ```
 
 ## Setup
@@ -97,21 +175,6 @@ pip install -r requirements.txt
 Raw disease data is gitignored. Run `01_data_ingestion_and_eda.ipynb` once to cache locally at `data/raw/`. Then run notebooks in order.
 
 For Colab, start with `00_colab_setup.ipynb` to mount Google Drive and clone the repo, then use the `_colab` variants of each notebook.
-
-## Climate Data Setup
-
-Raw AHCCD station files (~1.1 GB) are gitignored. Download from the [AHCCD direct download page](https://crd-data-donnees-rdc.ec.gc.ca/CDAS/products/EC_data/AHCCD_daily/) and place in `data/raw/climate/`:
-
-| Directory | Variable | Unit |
-|---|---|---|
-| `Homog_daily_max_temp_v2023_Gen3/` | Daily max temperature | °C |
-| `Homog_daily_mean_temp_v2023_Gen3/` | Daily mean temperature | °C |
-| `Homog_daily_min_temp_v2023_Gen3/` | Daily min temperature | °C |
-| `Adj_Daily_Rain_v2017/` | Adjusted daily rainfall | mm |
-| `Adj_Daily_Snow_v2017/` | Adjusted daily snowfall | mm |
-| `Adj_Daily_Total_v2017/` | Adjusted daily total precipitation | mm |
-
-Metadata files (`Temperature_Stations_Gen3_2023.xlsx`, `Adj_Precipitation_Stations.xls`, `Homog_Temperature_Stations_Segmented_List_Gen3.xls`) are committed.
 
 ## References
 
