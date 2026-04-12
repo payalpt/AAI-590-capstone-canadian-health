@@ -92,27 +92,29 @@ The final comparison showed the the two models had different strengths:
 This suggests that model choice depends not only on the forecasting method, but also on the disease behavior and the evaluation metric being emphasized.
 
 ## Notebook Guide
-The main notebooks used in the final project are:
 
-- `00_colab_setup.ipynb`
-  Sets up and verifies the project environment for Google Colab
-  
-- `01_data_ingestion_and_eda_fixed.ipynb`
-  Loads, cleans, validates, and prepares the weekly modeling dataset
-  
-- `03A_V1_ARIMA_model.ipynb`
-  Trains and evaluates the ARIMA baseline model
-  
-- `03B_V3_LSTM_model_colab.ipynb`
-  Trains and evaluates the LSTM forecasting model
-  
-- `04_V3_Compare_models_colab_Added.ipynb`
-  Compares ARIMA and LSTM results on the held-out test set and summarizes findings
+The following notebooks represent the final modeling and evaluation workflow used in the report and presentation. All are in `notebooks/` and designed to run locally.
 
-- `05_V2_PHAC_Validation_and_Analysis_colab.ipynb`
-  Compared aggregated model outputs against PHAC totals for cross-validation
+| Notebook | Description |
+|---|---|
+| `01_data_ingestion_and_eda_fixed.ipynb` | Loads, cleans, validates, and prepares the weekly modeling dataset |
+| `02_climate_exploration.ipynb` | Supplementary climate–disease correlation exploration (not used in final pipeline) |
+| `03A_V1_ARIMA_model.ipynb` | Trains and evaluates the ARIMA baseline model |
+| `03B_V3_LSTM_model.ipynb` | Trains and evaluates the LSTM forecasting model |
+| `04_V3_Compare_models.ipynb` | Compares ARIMA and LSTM results on the held-out test set |
+| `05_V2_PHAC_Validation_and_Analysis.ipynb` | Aggregates model outputs and validates against PHAC national totals |
 
-These notebooks reflect the final modeling and evaluation workflow used in the report and presentation.
+Run notebooks in order, as each stage depends on outputs from the previous step.
+
+### Google Colab Compatibility
+
+Colab-compatible versions of all notebooks are provided in `notebooks/colab versions/`. These variants handle Google Drive mounting and path configuration for a Colab environment.
+
+**To run in Colab:**
+1. Start with `notebooks/colab versions/00_colab_setup.ipynb` — this mounts Google Drive and sets up the project environment
+2. Then run the `_colab` variant of each notebook in the same order as above
+
+Previous and intermediate notebook versions are archived in `notebooks/previous versions/` for reference.
 
 ## Key Outputs
 
@@ -127,14 +129,15 @@ Important project outputs include:
 
 ## Reproducibility
 
-This project can be reproduced by running the notebooks in sequence, since each stage depends on outputs created earlier in the workflow. This begins with environment setup, followed by data preparation, model training, model comparison and external validation.
+This project can be reproduced by running the notebooks in sequence, as each stage depends on outputs from the previous step. Start with data preparation, then model training, then comparison and validation.
 
-When running in Google Colab, some file paths may need to be adjusted to match local or Google Drive storage locations used during development. 
+Run `01_data_ingestion_and_eda_fixed.ipynb` first to cache the raw data locally at `data/raw/`, then proceed through the remaining notebooks in order.
+
+For Colab, begin with `notebooks/colab versions/00_colab_setup.ipynb` to mount Google Drive and configure the environment, then use the `_colab` notebook variants in the same sequence.
 
 ## Project Structure
 
 ```text
-
 ├── data/
 │   ├── raw/                             # Raw source files and PHAC reference files
 │   │   ├── climate/                     # AHCCD climate data for supplementary exploration
@@ -148,13 +151,15 @@ When running in Google Colab, some file paths may need to be adjusted to match l
 │       ├── lstm_baseline_config.json    # LSTM architecture and training settings
 │       └── training_history.csv         # Training and validation loss history
 ├── notebooks/
-│   ├── 00_colab_setup.ipynb
-│   ├── 01_data_ingestion_and_eda_fixed.ipynb
-│   ├── 02_climate_exploration.ipynb
-│   ├── 03A_V1_ARIMA_model.ipynb
-│   ├── 03B_V3_LSTM_model_colab.ipynb
-│   ├── 04_V3_Compare_models_colab_Added Visuals.ipynb
-│   └── 05_V2_PHAC_Validation_and_Analysis_colab.ipynb
+│   ├── 01_data_ingestion_and_eda_fixed.ipynb   # Final data preparation notebook
+│   ├── 02_climate_exploration.ipynb             # Supplementary climate exploration
+│   ├── 03A_V1_ARIMA_model.ipynb                # Final ARIMA model
+│   ├── 03B_V3_LSTM_model.ipynb                 # Final LSTM model
+│   ├── 04_V3_Compare_models.ipynb              # Final model comparison
+│   ├── 05_V2_PHAC_Validation_and_Analysis.ipynb # Final PHAC validation
+│   ├── colab versions/                          # Colab-compatible variants of all notebooks
+│   │   └── 00_colab_setup.ipynb                # Start here for Colab setup
+│   └── previous versions/                       # Archived intermediate notebook versions
 ├── reports/
 │   ├── figures/                         # Figures used in the report and presentation
 │   └── tables/                          # Saved model outputs, summaries, and validation tables
@@ -171,10 +176,6 @@ When running in Google Colab, some file paths may need to be adjusted to match l
 ```bash
 pip install -r requirements.txt
 ```
-
-Raw disease data is gitignored. Run `01_data_ingestion_and_eda.ipynb` once to cache locally at `data/raw/`. Then run notebooks in order.
-
-For Colab, start with `00_colab_setup.ipynb` to mount Google Drive and clone the repo, then use the `_colab` variants of each notebook.
 
 ## References
 
