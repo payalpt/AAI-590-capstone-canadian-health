@@ -1,0 +1,5 @@
+model,best_year,worst_year,disease,best_year_abs_error,worst_year_abs_error
+LSTM,2005,2011,Measles,0.01,2.181
+LSTM,2021,2012,Whooping Cough (Pertussis),0.061,13.277
+ARIMA,2021,2011,Measles,0.001,2.189
+ARIMA,2021,2012,Whooping Cough (Pertussis),0.014,13.28

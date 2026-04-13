@@ -20,5 +20,5 @@
     "measles"
   ],
   "total_windows": 20220,
-  "note": "X shape: (n_windows, lookback_weeks, n_features). y is cases_per_100k only \u2014 denormalize using provincial population from window_metadata to recover raw case counts at evaluation time."
+  "note": "X shape: (n_windows, lookback_weeks, n_features). y is cases_per_100k only."
 }
